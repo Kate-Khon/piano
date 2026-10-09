@@ -15,9 +15,10 @@
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --luxury-transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   
-  --fs-hero: clamp(2rem, 5vw + 0.6rem, 3.75rem);
-  --fs-h2: clamp(1.6rem, 3vw + 0.6rem, 2.35rem);
-  --fs-body: clamp(0.98rem, 0.2vw + 0.88rem, 1.15rem);
+  /* Upgraded Fluid Typography: Provides a more generous text floor on mobile viewports */
+  --fs-hero: clamp(2.25rem, 6vw + 0.8rem, 3.75rem);
+  --fs-h2: clamp(1.75rem, 4vw + 0.8rem, 2.35rem);
+  --fs-body: clamp(1.05rem, 0.3vw + 0.95rem, 1.15rem);
 }
 
 /* ==========================================================================
@@ -36,10 +37,10 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--text-dark);
-  line-height: 1.65;
+  line-height: 1.7; /* Increased for breathing room on mobile screens */
   font-size: var(--fs-body);
-  background-color: #06040a !important; /* Velvet Backstage Shadow */
-  min-width: 300px;
+  background-color: #06040a !important; 
+  min-width: 320px; /* Enhanced baseline micro-safeguard */
   overflow-x: hidden;
   position: relative;
   text-rendering: optimizeLegibility;
@@ -50,8 +51,8 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding-left: clamp(1rem, 5vw, 3rem);
-  padding-right: clamp(1rem, 5vw, 3rem);
+  padding-left: clamp(1.25rem, 5vw, 3rem); /* Generous side padding on mobile screens */
+  padding-right: clamp(1.25rem, 5vw, 3rem);
 }
 
 /* ==========================================================================
@@ -77,7 +78,7 @@ body {
   object-fit: cover;
   will-change: transform;
   transform: translate3d(0, 0, 0);
-  filter: brightness(0.15) saturate(0.9) contrast(1.1) grayscale(10%) !important; 
+  filter: brightness(0.14) saturate(0.9) contrast(1.15) grayscale(10%) !important; 
 }
 
 .photo-parallax-overlay {
@@ -90,7 +91,7 @@ body {
     135deg, 
     rgba(124, 58, 237, 0.05) 0%, 
     rgba(79, 70, 229, 0.03) 40%,
-    rgba(6, 4, 10, 0.95) 100%
+    rgba(6, 4, 10, 0.96) 100%
   ) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
@@ -103,7 +104,7 @@ body {
 header {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background: rgba(10, 8, 22, 0.75);
+  background: rgba(10, 8, 22, 0.8);
   border-bottom: 1px solid rgba(129, 140, 248, 0.1);
   position: sticky;
   top: 0;
@@ -115,15 +116,15 @@ header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-  gap: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  gap: 1.25rem;
 }
 
 .logo { 
   font-family: var(--font-serif);
   font-weight: 700; 
-  font-size: 1.35rem; 
+  font-size: clamp(1.25rem, 4vw, 1.45rem); 
   letter-spacing: 0.02em; 
 }
 
@@ -131,25 +132,25 @@ header .container {
   font-family: var(--font-sans);
   font-weight: 300; 
   color: var(--text-light); 
-  font-size: 0.95rem; 
-  letter-spacing: 0.15em;
+  font-size: 0.85rem; 
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 nav { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.5rem); }
-nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.95rem; position: relative; transition: var(--luxury-transition); }
+nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 1rem; position: relative; transition: var(--luxury-transition); }
 nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background-color: var(--primary-color); transition: var(--luxury-transition); }
 nav a:hover::after { width: 100%; }
 
-.scroll-progress-container { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(129, 140, 248, 0.04); overflow: hidden; pointer-events: none; }
+.scroll-progress-container { position: absolute; bottom: 0; left: 0; width: 100%; height: 3.5px; background: rgba(129, 140, 248, 0.04); overflow: hidden; pointer-events: none; }
 .scroll-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-purple) 100%); will-change: width; transition: width 0.1s linear; box-shadow: 0 0 10px var(--primary-color); }
 
 /* ==========================================================================
    5. Typography & Structural Sections
    ========================================================================== */
 section {
-  padding-top: clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(4.5rem, 10vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 10vw, 7.5rem);
 }
 
 section h2 { 
@@ -157,19 +158,19 @@ section h2 {
   font-size: var(--fs-h2); 
   font-weight: 400; 
   text-align: center; 
-  margin-bottom: 2rem; 
+  margin-bottom: 2.5rem; 
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
 
 .hero { text-align: center; }
-.hero h1 { font-family: var(--font-serif); font-size: var(--fs-hero); font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; text-wrap: balance; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6); }
-.hero p { color: var(--text-light); max-width: 52ch; margin: 0 auto 2.5rem auto; text-wrap: balance; }
+.hero h1 { font-family: var(--font-serif); font-size: var(--fs-hero); font-weight: 400; line-height: 1.25; margin-bottom: 1.75rem; text-wrap: balance; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6); }
+.hero p { color: var(--text-light); max-width: 52ch; margin: 0 auto 3rem auto; text-wrap: balance; }
 
-/* About Grid Layout & Mini Galleries */
+/* About Grid Layout & Enhanced Image Panels */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2.5rem, 6vw, 4rem);
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -179,16 +180,16 @@ section h2 {
   background: var(--card-glass) !important;
   border: 1px solid rgba(129, 140, 248, 0.15) !important;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important;
-  padding: clamp(2rem, 4vw, 3rem) !important;
+  padding: clamp(2rem, 5vw, 3.5rem) !important;
   border-radius: 24px;
   text-align: left;
 }
 
-.content-sub { color: var(--text-light); font-size: 0.95rem; margin-top: 1rem; }
+.content-sub { color: var(--text-light); font-size: 1rem; margin-top: 1.25rem; }
 
 .about-image-wrapper {
   background: rgba(129, 140, 248, 0.03);
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
@@ -199,14 +200,14 @@ section h2 {
 .about-image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .about-image-wrapper:hover img { transform: scale(1.03); }
 .about-image-wrapper.portrait { aspect-ratio: 3 / 4; width: 100%; max-width: 450px; margin: 0 auto; }
-.about-gallery-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.about-gallery-sub { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.25rem; }
 .about-image-wrapper.action-hands, .about-image-wrapper.action-coaching { aspect-ratio: 4 / 3; }
 
-.performance-banner-wrapper { width: 100%; height: clamp(200px, 35vh, 400px); position: relative; overflow: hidden; border-top: 1px solid rgba(129, 140, 248, 0.1); border-bottom: 1px solid rgba(129, 140, 248, 0.1); }
+.performance-banner-wrapper { width: 100%; height: clamp(220px, 35vh, 400px); position: relative; overflow: hidden; border-top: 1px solid rgba(129, 140, 248, 0.1); border-bottom: 1px solid rgba(129, 140, 248, 0.1); }
 .performance-banner-img { width: 100%; height: 120%; object-fit: cover; position: absolute; top: -10%; left: 0; pointer-events: none; filter: brightness(0.15) saturate(0.9) contrast(1.1); }
 .performance-banner-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(6,4,10,1) 0%, rgba(6,4,10,0) 25%, rgba(6,4,10,0) 75%, rgba(6,4,10,1) 100%); z-index: 2; pointer-events: none; }
 
-.section-desc { text-align: center; color: var(--text-light); margin-bottom: 3.5rem; }
+.section-desc { text-align: center; color: var(--text-light); margin-bottom: 4rem; font-size: 1.1rem; }
 
 /* ==========================================================================
    6. Pricing Tiers & Premium Card Zoom Interactions
@@ -214,7 +215,7 @@ section h2 {
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-  gap: 2.5rem;
+  gap: 3rem;
   max-width: 950px;
   margin: 0 auto;
 }
@@ -223,8 +224,8 @@ section h2 {
   background: var(--card-glass) !important;
   border: 1px solid rgba(129, 140, 248, 0.15) !important;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important;
-  border-radius: 20px;
-  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: 24px;
+  padding: clamp(2.25rem, 5vw, 3.5rem);
   position: relative;
   transform: translate3d(0, 0, 0);
   will-change: transform, box-shadow;
@@ -239,25 +240,23 @@ section h2 {
 }
 
 .price-card.featured { border: 1px solid rgba(192, 132, 252, 0.35); background: rgba(15, 12, 32, 0.75); }
-.price-card .badge { position: absolute; top: -13px; left: 2rem; background: linear-gradient(135deg, var(--accent-purple) 0%, #4f46e5 100%); color: #ffffff; padding: 0.25rem 0.85rem; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; border-radius: 30px; letter-spacing: 0.05em; }
-.price-card h3 { font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; }
-.price-card .hours { font-size: 1.85rem; font-weight: 700; color: var(--concert-gold) !important; text-shadow: 0 0 12px rgba(251, 191, 36, 0.3); margin-bottom: 1.25rem; }
-.card-desc { color: var(--text-light); font-size: 0.98rem; margin-bottom: 2rem; }
+.price-card .badge { position: absolute; top: -14px; left: 2.25rem; background: linear-gradient(135deg, var(--accent-purple) 0%, #4f46e5 100%); color: #ffffff; padding: 0.35rem 1rem; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; border-radius: 30px; letter-spacing: 0.06em; }
+.price-card h3 { font-size: 1.75rem; font-weight: 400; margin-bottom: 0.75rem; }
+.price-card .hours { font-size: 2rem; font-weight: 700; color: var(--concert-gold) !important; text-shadow: 0 0 12px rgba(251, 191, 36, 0.3); margin-bottom: 1.5rem; }
+.card-desc { color: var(--text-light); font-size: 1.05rem; margin-bottom: 2.25rem; }
 
-.features-list { list-style: none; margin-bottom: 2.5rem; }
-.features-list li { margin-bottom: 0.8rem; position: relative; padding-left: 1.5rem; color: var(--text-light); font-size: 0.98rem; text-align: left; }
-.features-list li::before { content: "✧"; position: absolute; left: 0; color: var(--primary-color) !important; }
+.features-list { list-style: none; margin-bottom: 2.75rem; }
+.features-list li { margin-bottom: 1rem; position: relative; padding-left: 2rem; color: var(--text-light); font-size: 1.05rem; text-align: left; }
+.features-list li::before { content: "✧"; position: absolute; left: 0; color: var(--primary-color) !important; font-size: 1.15rem; }
 .price-card .btn-primary, .price-card .btn-secondary { display: block; width: 100%; }
-
-
 /* ==========================================================================
-   7. Premium Cinematic Scroll Reveal Animations 
-   ========================================================================== */
+7. Buttons & Form Element Architecture
+========================================================================== */
 .btn-primary, .btn-secondary, .btn-nav {
 display: inline-block;
 text-decoration: none;
 border-radius: 40px;
-font-weight: 500;
+font-weight: 600;
 text-align: center;
 letter-spacing: 0.04em;
 transition: var(--luxury-transition);
@@ -268,7 +267,8 @@ transform: translate3d(0, 0, 0);
 .btn-primary {
 background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
 color: #ffffff !important;
-padding: 0.85rem 2.1rem;
+padding: 1.05rem 2.25rem; /* Expanded hit area for touchscreen ease */
+font-size: 1.1rem;
 box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3) !important;
 }
 .btn-primary:hover {
@@ -279,7 +279,8 @@ box-shadow: 0 0 30px rgba(124, 58, 237, 0.5) !important;
 background: transparent !important;
 color: var(--primary-color) !important;
 border: 2px solid var(--primary-color) !important;
-padding: 0.8rem 2rem;
+padding: 1rem 2.25rem;
+font-size: 1.1rem;
 }
 .btn-secondary:hover {
 background: var(--primary-color) !important;
@@ -287,50 +288,46 @@ color: #06040a !important;
 box-shadow: 0 0 25px var(--primary-color) !important;
 transform: translate3d(0, -2px, 0);
 }
-.btn-nav { background-color: var(--text-dark); color: #06040a; padding: 0.55rem 1.3rem; font-size: 0.85rem; }
+.btn-nav { background-color: var(--text-dark); color: #06040a; padding: 0.7rem 1.5rem; font-size: 0.95rem; }
 .btn-nav:hover { background-color: var(--primary-color); color: #06040a; }
-
-/* ==========================================================================
-   8. Asynchronous Success Message Layout
-   ========================================================================== */
 /* ==========================================================================
 8. Sliding FAQ Accordions & Form Matrix Inputs
 ========================================================================== */
-.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
-.faq-item { background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important; border-radius: 16px; overflow: hidden; transition: var(--luxury-transition); }
-.faq-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; padding: 1.75rem 2rem; text-align: left; cursor: pointer; outline: none; }
-.faq-trigger h3 { margin-bottom: 0 !important; font-size: 1.25rem; font-weight: 400; color: var(--text-dark); }
-.faq-icon-status { font-size: 1.1rem; color: var(--primary-color) !important; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.75rem; }
+.faq-item { background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important; border-radius: 20px; overflow: hidden; transition: var(--luxury-transition); }
+.faq-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; padding: 2rem; text-align: left; cursor: pointer; outline: none; }
+.faq-trigger h3 { margin-bottom: 0 !important; font-size: 1.35rem; font-weight: 400; color: var(--text-dark); line-height: 1.4; }
+.faq-icon-status { font-size: 1.25rem; color: var(--primary-color) !important; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; margin-left: 1rem; }
 .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: max-height; }
-.faq-content-inner { padding: 0 2rem 1.75rem 2rem; }
+.faq-content-inner { padding: 0 2rem 2rem 2rem; font-size: 1.05rem; color: var(--text-light); }
 .faq-item.active { background: rgba(15, 12, 32, 0.8); border-color: rgba(129, 140, 248, 0.3) !important; }
 .faq-item.active .faq-icon-status { transform: rotate(135deg); color: var(--accent-purple) !important; }
 /* Repertoire Checkbox Matrix Component */
-.repertoire-matrix { margin: 0.5rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
-.matrix-title { font-size: 0.95rem; font-weight: 500; color: var(--text-dark); }
-.matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1rem; }
-.matrix-card { display: flex; align-items: flex-start; gap: 1rem; background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important; padding: 1.15rem 1.25rem; border-radius: 12px; cursor: pointer; position: relative; transition: var(--luxury-transition); user-select: none; }
+.repertoire-matrix { margin: 0.75rem 0; display: flex; flex-direction: column; gap: 1rem; }
+.matrix-title { font-size: 1.05rem; font-weight: 500; color: var(--text-dark); letter-spacing: 0.01em; }
+.matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.25rem; }
+.matrix-card { display: flex; align-items: flex-start; gap: 1.15rem; background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important; padding: 1.35rem 1.5rem; border-radius: 16px; cursor: pointer; position: relative; transition: var(--luxury-transition); user-select: none; }
 .matrix-card input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-.matrix-box { height: 18px; width: 18px; border: 1px solid rgba(129, 140, 248, 0.3); border-radius: 4px; background: rgba(6, 4, 10, 0.8); display: inline-block; flex-shrink: 0; margin-top: 3px; position: relative; transition: all 0.3s ease; }
-.matrix-label { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; }
-.matrix-label strong { font-size: 0.95rem; color: var(--text-dark); font-weight: 500; }
-.matrix-label small { font-size: 0.78rem; color: var(--text-light); line-height: 1.3; }
+.matrix-box { height: 22px; width: 22px; border: 1px solid rgba(129, 140, 248, 0.3); border-radius: 6px; background: rgba(6, 4, 10, 0.8); display: inline-block; flex-shrink: 0; margin-top: 2px; position: relative; transition: all 0.3s ease; }
+.matrix-label { display: flex; flex-direction: column; gap: 0.3rem; text-align: left; }
+.matrix-label strong { font-size: 1.05rem; color: var(--text-dark); font-weight: 500; }
+.matrix-label small { font-size: 0.85rem; color: var(--text-light); line-height: 1.4; }
 .matrix-card:hover { background: rgba(15, 12, 32, 0.8); border-color: var(--primary-color) !important; transform: translate3d(0, -2px, 0); }
 .matrix-card input:checked ~ .matrix-box { background: var(--accent-purple) !important; border-color: var(--accent-purple) !important; }
-.matrix-card input:checked ~ .matrix-box::after { content: ""; position: absolute; left: 5px; top: 2px; width: 4px; height: 8px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.matrix-card input:checked ~ .matrix-box::after { content: ""; position: absolute; left: 7px; top: 3px; width: 5px; height: 10px; border: solid white; border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
 .matrix-card:has(input:checked) { border-color: var(--accent-purple) !important; box-shadow: 0 0 20px rgba(192, 132, 252, 0.15) !important; }
 /* ==========================================================================
 9. Contact Form Inputs & Form Submissions
 ========================================================================== */
-.contact p { color: var(--text-light); margin-bottom: 2.5rem; max-width: 55ch; margin-left: auto; margin-right: auto; text-wrap: balance; }
-.contact-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.25rem; transition: opacity 0.4s ease, transform 0.4s ease; will-change: transform, opacity; }
-.contact-form input, .contact-form textarea { width: 100%; padding: 1rem 1.25rem; background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; border-radius: 12px; font-family: var(--font-sans); color: #ffffff; font-size: 1rem; transition: var(--luxury-transition); }
+.contact p { color: var(--text-light); margin-bottom: 3rem; max-width: 55ch; margin-left: auto; margin-right: auto; text-wrap: balance; font-size: 1.1rem; }
+.contact-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; transition: opacity 0.4s ease, transform 0.4s ease; will-change: transform, opacity; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 1.2rem 1.5rem; background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; border-radius: 16px; font-family: var(--font-sans); color: #ffffff; font-size: 1.05rem; transition: var(--luxury-transition); }
 .contact-form input:focus, .contact-form textarea:focus { outline: none; background: rgba(15, 12, 32, 0.9); border-color: var(--accent-purple) !important; }
-.success-message { text-align: center; padding: clamp(2.5rem, 6vw, 4rem) 2rem; background: var(--card-glass) !important; border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 20px; transition: opacity 0.5s ease, transform 0.5s ease; }
-.success-icon { font-size: 2.5rem; color: var(--accent-purple); margin-bottom: 1rem; }
-.success-message h3 { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 400; margin-bottom: 1rem; }
-.success-message p { color: var(--text-light); max-width: 45ch !important; margin: 0 auto; }
-footer { padding: 3rem 0; border-top: 1px solid rgba(129, 140, 248, 0.1); color: var(--text-light); font-size: 0.875rem; text-align: center; }
+.success-message { text-align: center; padding: clamp(2.5rem, 6vw, 4rem) 2rem; background: var(--card-glass) !important; border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 24px; transition: opacity 0.5s ease, transform 0.5s ease; }
+.success-icon { font-size: 3rem; color: var(--accent-purple); margin-bottom: 1.25rem; }
+.success-message h3 { font-family: var(--font-serif); font-size: 1.95rem; font-weight: 400; margin-bottom: 1.25rem; }
+.success-message p { color: var(--text-light); max-width: 45ch !important; margin: 0 auto; font-size: 1.1rem; }
+footer { padding: 3.5rem 0; border-top: 1px solid rgba(129, 140, 248, 0.1); color: var(--text-light); font-size: 0.95rem; text-align: center; }
 /* ==========================================================================
 10. Scroll Reveal Keyframe Vectors
 ========================================================================== */
@@ -342,21 +339,82 @@ transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(
 }
 .scroll-reveal.revealed { opacity: 1; transform: translate3d(0, 0, 0); }
 /* ==========================================================================
-11. Viewport Breakpoints & Safety Fallbacks
+11. Mobile-First Viewport Breakpoints & Safety Fallbacks
 ========================================================================== */
 @media (min-width: 769px) {
 .pricing-grid .price-card:nth-child(2) { transition-delay: 0.15s; }
 }
-@media (max-width: 991px) {
-.about-grid { grid-template-columns: 1fr; max-width: 600px; }
-.about-image-wrapper.portrait { max-width: 100%; }
+/* Dedicated Mobile Structural Overhaul Rules */
+@media (max-width: 768px) {
+section {
+padding-top: 4.5rem;
+padding-bottom: 4.5rem;
 }
-@media (max-width: 680px) {
-header .container { flex-direction: column; gap: 1rem; }
-nav { flex-wrap: wrap; justify-content: center; gap: 0.85rem; }
+header .container {
+flex-direction: column;
+gap: 1.5rem;
+text-align: center;
+padding-top: 1.5rem;
+padding-bottom: 1.5rem;
+}
+nav {
+flex-wrap: wrap;
+justify-content: center;
+gap: 1.25rem;
+width: 100%;
+}
+nav a {
+font-size: 1.05rem; /* Enhanced readability for fingers on touch screens */
+padding: 0.4rem 0.6rem;
+}
+.btn-nav {
+width: 100%;
+max-width: 280px;
+margin-top: 0.25rem;
+padding: 0.85rem 1.5rem;
+}
+.about-grid {
+grid-template-columns: 1fr;
+max-width: 100%;
+gap: 2rem;
+}
+.about-image-wrapper.portrait {
+max-width: 100%;
+border-radius: 16px;
+}
+.about-gallery-sub {
+gap: 1rem;
+margin-top: 1.75rem;
+}
+.about-image-wrapper {
+border-radius: 12px;
+}
+.pricing-grid {
+grid-template-columns: 1fr;
+gap: 2.25rem;
+}
+.price-card {
+padding: 2.25rem 1.5rem;
+border-radius: 20px;
+}
+.faq-trigger {
+padding: 1.5rem 1.25rem;
+}
+.faq-trigger h3 {
+font-size: 1.2rem;
+}
+.faq-content-inner {
+padding: 0 1.25rem 1.5rem 1.25rem;
+}
+.matrix-grid {
+grid-template-columns: 1fr;
+gap: 0.85rem;
+}
+.matrix-card {
+padding: 1.2rem;
+}
 }
 @media (prefers-reduced-motion: reduce) {
 .scroll-reveal { transition: opacity 0.4s ease; transform: none; }
 .photo-parallax-img { transform: none !important; height: 100vh; }
 }
-
