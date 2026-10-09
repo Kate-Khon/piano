@@ -15,7 +15,6 @@
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --luxury-transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   
-  /* Upgraded Fluid Typography: Provides a more generous text floor on mobile viewports */
   --fs-hero: clamp(2.25rem, 6vw + 0.8rem, 3.75rem);
   --fs-h2: clamp(1.75rem, 4vw + 0.8rem, 2.35rem);
   --fs-body: clamp(1.05rem, 0.3vw + 0.95rem, 1.15rem);
@@ -37,10 +36,10 @@ html {
 body {
   font-family: var(--font-sans);
   color: var(--text-dark);
-  line-height: 1.7; /* Increased for breathing room on mobile screens */
+  line-height: 1.7;
   font-size: var(--fs-body);
   background-color: #06040a !important; 
-  min-width: 320px; /* Enhanced baseline micro-safeguard */
+  min-width: 320px;
   overflow-x: hidden;
   position: relative;
   text-rendering: optimizeLegibility;
@@ -51,7 +50,7 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding-left: clamp(1.25rem, 5vw, 3rem); /* Generous side padding on mobile screens */
+  padding-left: clamp(1.25rem, 5vw, 3rem);
   padding-right: clamp(1.25rem, 5vw, 3rem);
 }
 
@@ -137,6 +136,13 @@ header .container {
   text-transform: uppercase;
 }
 
+.logo-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
 nav { display: flex; align-items: center; gap: clamp(1.2rem, 3vw, 2.5rem); }
 nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 1rem; position: relative; transition: var(--luxury-transition); }
 nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background-color: var(--primary-color); transition: var(--luxury-transition); }
@@ -210,7 +216,7 @@ section h2 {
 .section-desc { text-align: center; color: var(--text-light); margin-bottom: 4rem; font-size: 1.1rem; }
 
 /* ==========================================================================
-   6. Pricing Tiers & Premium Card Zoom Interactions
+   6. Pricing Tiers & Premium Card Highlights
    ========================================================================== */
 .pricing-grid {
   display: grid;
@@ -221,6 +227,9 @@ section h2 {
 }
 
 .price-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures columns match heights in the grid container */
   background: var(--card-glass) !important;
   border: 1px solid rgba(129, 140, 248, 0.15) !important;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important;
@@ -232,14 +241,20 @@ section h2 {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.price-card:hover {
-  transform: translate3d(0, -8px, 0) scale(1.015) !important;
-  background: rgba(15, 12, 32, 0.85);
-  border-color: var(--accent-purple) !important;
-  box-shadow: 0 0 35px rgba(192, 132, 252, 0.2) !important;
+/* Elite Performance Track Highlights */
+.price-card.featured { 
+  border: 1px solid rgba(192, 132, 252, 0.45) !important; 
+  background: rgba(15, 12, 32, 0.75) !important; 
+  box-shadow: 0 30px 60px rgba(168, 85, 247, 0.12) !important;
 }
 
-.price-card.featured { border: 1px solid rgba(192, 132, 252, 0.35); background: rgba(15, 12, 32, 0.75); }
+.price-card:hover {
+  transform: translate3d(0, -8px, 0) scale(1.015) !important;
+  background: rgba(15, 12, 32, 0.85) !important;
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 35px rgba(192, 132, 252, 0.25) !important;
+}
+
 .price-card .badge { position: absolute; top: -14px; left: 2.25rem; background: linear-gradient(135deg, var(--accent-purple) 0%, #4f46e5 100%); color: #ffffff; padding: 0.35rem 1rem; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; border-radius: 30px; letter-spacing: 0.06em; }
 .price-card h3 { font-size: 1.75rem; font-weight: 400; margin-bottom: 0.75rem; }
 .price-card .hours { font-size: 2rem; font-weight: 700; color: var(--concert-gold) !important; text-shadow: 0 0 12px rgba(251, 191, 36, 0.3); margin-bottom: 1.5rem; }
@@ -248,7 +263,8 @@ section h2 {
 .features-list { list-style: none; margin-bottom: 2.75rem; }
 .features-list li { margin-bottom: 1rem; position: relative; padding-left: 2rem; color: var(--text-light); font-size: 1.05rem; text-align: left; }
 .features-list li::before { content: "✧"; position: absolute; left: 0; color: var(--primary-color) !important; font-size: 1.15rem; }
-.price-card .btn-primary, .price-card .btn-secondary { display: block; width: 100%; }
+.price-card .btn-primary, .price-card .btn-secondary { margin-top: auto; display: block; width: 100%; }
+
 /* ==========================================================================
 7. Buttons & Form Element Architecture
 ========================================================================== */
@@ -267,7 +283,7 @@ transform: translate3d(0, 0, 0);
 .btn-primary {
 background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
 color: #ffffff !important;
-padding: 1.05rem 2.25rem; /* Expanded hit area for touchscreen ease */
+padding: 1.05rem 2.25rem;
 font-size: 1.1rem;
 box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3) !important;
 }
@@ -293,15 +309,45 @@ transform: translate3d(0, -2px, 0);
 /* ==========================================================================
 8. Sliding FAQ Accordions & Form Matrix Inputs
 ========================================================================== */
-.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.75rem; }
+.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
 .faq-item { background: var(--card-glass) !important; border: 1px solid rgba(129, 140, 248, 0.15) !important; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6) !important; border-radius: 20px; overflow: hidden; transition: var(--luxury-transition); }
-.faq-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; padding: 2rem; text-align: left; cursor: pointer; outline: none; }
-.faq-trigger h3 { margin-bottom: 0 !important; font-size: 1.35rem; font-weight: 400; color: var(--text-dark); line-height: 1.4; }
-.faq-icon-status { font-size: 1.25rem; color: var(--primary-color) !important; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; margin-left: 1rem; }
+.faq-trigger {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: transparent;
+border: none;
+padding: 2rem;
+text-align: left;
+cursor: pointer;
+outline: none;
+}
+.faq-trigger h3 { margin-bottom: 0 !important; font-size: 1.35rem; font-weight: 400; color: var(--text-dark); line-height: 1.4; flex-grow: 1; }
+/* Anchors accordion stars to avoid jumping layouts when opened */
+.faq-icon-status {
+font-size: 1.25rem;
+color: var(--primary-color) !important;
+will-change: transform;
+margin-left: 1.5rem;
+flex-shrink: 0;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 24px;
+height: 24px;
+transform: rotate(0deg);
+/* Uses a specific operational transition filter to isolate rotation vectors cleanly */
+transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+}
 .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: max-height; }
 .faq-content-inner { padding: 0 2rem 2rem 2rem; font-size: 1.05rem; color: var(--text-light); }
 .faq-item.active { background: rgba(15, 12, 32, 0.8); border-color: rgba(129, 140, 248, 0.3) !important; }
-.faq-item.active .faq-icon-status { transform: rotate(135deg); color: var(--accent-purple) !important; }
+/* Spin alignment fix */
+.faq-item.active .faq-icon-status {
+transform: rotate(135deg);
+color: var(--accent-purple) !important;
+}
 /* Repertoire Checkbox Matrix Component */
 .repertoire-matrix { margin: 0.75rem 0; display: flex; flex-direction: column; gap: 1rem; }
 .matrix-title { font-size: 1.05rem; font-weight: 500; color: var(--text-dark); letter-spacing: 0.01em; }
@@ -328,28 +374,42 @@ transform: translate3d(0, -2px, 0);
 .success-message h3 { font-family: var(--font-serif); font-size: 1.95rem; font-weight: 400; margin-bottom: 1.25rem; }
 .success-message p { color: var(--text-light); max-width: 45ch !important; margin: 0 auto; font-size: 1.1rem; }
 footer { padding: 3.5rem 0; border-top: 1px solid rgba(129, 140, 248, 0.1); color: var(--text-light); font-size: 0.95rem; text-align: center; }
+
 /* ==========================================================================
-10. Scroll Reveal Keyframe Vectors
-========================================================================== */
+   10. Scroll Reveal Keyframe Vectors (Slow Cinematic Grow Engine)
+   ========================================================================== */
 .scroll-reveal {
-opacity: 0;
-transform: translate3d(0, 30px, 0);
-will-change: transform, opacity;
-transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  /* Starts slightly lower and compressed to accentuate the deliberate growth */
+  transform: translate3d(0, 35px, 0) scale(0.94);
+  will-change: transform, opacity;
+  /* Extended to 1.8s with a custom cubic-bezier for a slow, premium deceleration */
+  transition: opacity 1.8s cubic-bezier(0.1, 0.8, 0.2, 1), 
+              transform 1.8s cubic-bezier(0.1, 0.8, 0.2, 1);
 }
-.scroll-reveal.revealed { opacity: 1; transform: translate3d(0, 0, 0); }
+
+/* Active animation state triggered smoothly via JavaScript Observer */
+.scroll-reveal.revealed { 
+  opacity: 1; 
+  transform: translate3d(0, 0, 0) scale(1); /* Expands beautifully to full size */
+}
+
+/* Staggered delay for the second pricing card to maintain structural rhythm */
+@media (min-width: 769px) {
+  .pricing-grid .price-card:nth-child(2) { 
+    transition-delay: 0.25s; /* Slightly increased to match the slower animation rhythm */
+  }
+}
+
+
 /* ==========================================================================
 11. Mobile-First Viewport Breakpoints & Safety Fallbacks
 ========================================================================== */
 @media (min-width: 769px) {
 .pricing-grid .price-card:nth-child(2) { transition-delay: 0.15s; }
 }
-/* Dedicated Mobile Structural Overhaul Rules */
 @media (max-width: 768px) {
-section {
-padding-top: 4.5rem;
-padding-bottom: 4.5rem;
-}
+section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
 header .container {
 flex-direction: column;
 gap: 1.5rem;
@@ -357,62 +417,20 @@ text-align: center;
 padding-top: 1.5rem;
 padding-bottom: 1.5rem;
 }
-nav {
-flex-wrap: wrap;
-justify-content: center;
-gap: 1.25rem;
-width: 100%;
-}
-nav a {
-font-size: 1.05rem; /* Enhanced readability for fingers on touch screens */
-padding: 0.4rem 0.6rem;
-}
-.btn-nav {
-width: 100%;
-max-width: 280px;
-margin-top: 0.25rem;
-padding: 0.85rem 1.5rem;
-}
-.about-grid {
-grid-template-columns: 1fr;
-max-width: 100%;
-gap: 2rem;
-}
-.about-image-wrapper.portrait {
-max-width: 100%;
-border-radius: 16px;
-}
-.about-gallery-sub {
-gap: 1rem;
-margin-top: 1.75rem;
-}
-.about-image-wrapper {
-border-radius: 12px;
-}
-.pricing-grid {
-grid-template-columns: 1fr;
-gap: 2.25rem;
-}
-.price-card {
-padding: 2.25rem 1.5rem;
-border-radius: 20px;
-}
-.faq-trigger {
-padding: 1.5rem 1.25rem;
-}
-.faq-trigger h3 {
-font-size: 1.2rem;
-}
-.faq-content-inner {
-padding: 0 1.25rem 1.5rem 1.25rem;
-}
-.matrix-grid {
-grid-template-columns: 1fr;
-gap: 0.85rem;
-}
-.matrix-card {
-padding: 1.2rem;
-}
+nav { flex-wrap: wrap; justify-content: center; gap: 1.25rem; width: 100%; }
+nav a { font-size: 1.05rem; padding: 0.4rem 0.6rem; }
+.btn-nav { width: 100%; max-width: 280px; margin-top: 0.25rem; padding: 0.85rem 1.5rem; }
+.about-grid { grid-template-columns: 1fr; max-width: 100%; gap: 2rem; }
+.about-image-wrapper.portrait { max-width: 100%; border-radius: 16px; }
+.about-gallery-sub { gap: 1rem; margin-top: 1.75rem; }
+.about-image-wrapper { border-radius: 12px; }
+.pricing-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+.price-card { padding: 2.25rem 1.5rem; border-radius: 20px; }
+.faq-trigger { padding: 1.5rem 1.25rem; }
+.faq-trigger h3 { font-size: 1.2rem; }
+.faq-content-inner { padding: 0 1.25rem 1.5rem 1.25rem; }
+.matrix-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+.matrix-card { padding: 1.2rem; }
 }
 @media (prefers-reduced-motion: reduce) {
 .scroll-reveal { transition: opacity 0.4s ease; transform: none; }
